@@ -40,7 +40,7 @@ and then run `npm run build` to generate the file
 3. Run CLI `connect` command using the plugin.
 
 ```sh
-zeplin connect -p zeplin-cli-connect-plugin-stenciljs
+zeplin connect
 ```
 
 ## About Connected Components
