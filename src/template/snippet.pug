@@ -1,0 +1,11 @@
+block snippet
+    | <#{tag}
+    if props.length > 0
+        |
+        |
+        each prop, index in props
+            |   #{prop.name}={#{prop.type}}
+            if index !== (props.length -1)
+                |
+                |
+        |  />

@@ -1,9 +1,12 @@
 import { ConnectPlugin, ComponentConfig, ComponentData, PrismLang, PluginContext } from '@zeplin/cli';
 
 import { readFileSync } from 'fs';
+import pug from 'pug';
+import path from 'path';
 
 export default class implements ConnectPlugin {
     private source: any;
+    template = pug.compileFile(path.join(__dirname, 'template/snippet.pug'));
     /**
      * CLI invokes this method once the package is loaded.
      * pluginContext contains custom parameters defined in the configuration
@@ -16,6 +19,7 @@ export default class implements ConnectPlugin {
         if (config?.sourcePath) {
             this.source = JSON.parse(readFileSync(config.sourcePath as string, 'utf8'));
         }
+        // throw an error here with indications
     }
 
     /**
@@ -26,17 +30,17 @@ export default class implements ConnectPlugin {
             (item: { filePath: string }) => item.filePath.indexOf(context.path) > -1
         );
 
-        const propsSnippet = props
-            .map((prop: { name: string; type: string }) => {
-                return `${prop.name}={${prop.type}}`;
-            })
-            .join('\n');
-
         return {
             description: docs,
-            snippet: `<${tag}>
-            ${propsSnippet}
-            </${tag}>`,
+            snippet: this.template({
+                tag,
+                props: props.map((prop: { name: string; type: string }) => {
+                    return {
+                        ...prop,
+                        type: prop.type.replace(/\"/g, ''),
+                    };
+                }),
+            }),
             lang: PrismLang.HTML,
         };
     }
