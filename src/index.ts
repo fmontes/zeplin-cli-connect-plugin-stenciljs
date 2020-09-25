@@ -1,16 +1,16 @@
-import { ConnectPlugin, ComponentConfig, ComponentData, PrismLang, PluginContext } from '@zeplin/cli';
+import { ConnectPlugin, ComponentConfig, ComponentData, PrismLang, PluginContext } from "@zeplin/cli";
 
-import { readFileSync } from 'fs';
-import pug from 'pug';
-import path from 'path';
+import { readFileSync } from "fs";
+import pug from "pug";
+import path from "path";
 
-import { DocsSources } from './types/stencil-public-docs';
+import { DocsSources } from "./types/stencil-public-docs";
 
 export default class implements ConnectPlugin {
-    private supportedFileExtensions = ['.ts', '.tsx'];
+    private supportedFileExtensions = [".ts", ".tsx"];
     private source: DocsSources;
 
-    template = pug.compileFile(path.join(__dirname, 'template/snippet.pug'));
+    template = pug.compileFile(path.join(__dirname, "template/snippet.pug"));
     /**
      * CLI invokes this method once the package is loaded.
      * pluginContext contains custom parameters defined in the configuration
@@ -22,12 +22,12 @@ export default class implements ConnectPlugin {
     async init({ config }: PluginContext): Promise<void> {
         if (config?.sourcePath) {
             try {
-                this.source = JSON.parse(readFileSync(config.sourcePath as string, 'utf8')) as DocsSources;
+                this.source = JSON.parse(readFileSync(config.sourcePath as string, "utf8")) as DocsSources;
             } catch (error) {
                 throw new Error(`Can't parse your documentation json file. More information in: https://xxxx.com`);
             }
         } else {
-            throw new Error('You need to pass a valid document json file. More information in: https://xxxx.com');
+            throw new Error("You need to pass a valid document json file. More information in: https://xxxx.com");
         }
     }
 
@@ -45,7 +45,7 @@ export default class implements ConnectPlugin {
                 props: props?.map((prop: { name: string; type: string }) => {
                     return {
                         ...prop,
-                        type: prop.type.replace(/\"/g, ''),
+                        type: prop.type.replace(/\"/g, ""),
                     };
                 }),
             }),
