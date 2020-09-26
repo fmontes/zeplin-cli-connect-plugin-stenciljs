@@ -7,7 +7,7 @@
         "build": "tsc && copyfiles -u 1 src/template/** dist/",
         "test": "jest",
         "lint": "tslint --project tsconfig.json",
-        "lint:fix": "npm run lint -- --fix;git add"
+        "lint:fix": "npm run lint -- --fix;git add ."
     },
     "husky": {
         "hooks": {
