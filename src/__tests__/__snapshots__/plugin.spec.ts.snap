@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Connected Components StencilJS Plugin - TypeScript proccess my-compontent.tsx snippet creation 1`] = `
+Object {
+  "description": "This is the documentation
+
+Last update: 2020-09-20T05:48:43",
+  "lang": "html",
+  "snippet": "<my-component
+  name={string} />",
+}
+`;

@@ -24,10 +24,10 @@ export default class implements ConnectPlugin {
             try {
                 this.source = JSON.parse(readFileSync(config.sourcePath as string, "utf8")) as DocsSources;
             } catch (error) {
-                throw new Error(`Can't parse your documentation json file. More information in: https://xxxx.com`);
+                throw new Error(`Can't parse your documentation json file. More information in: https://github.com/fmontes/zeplin-cli-connect-plugin-stenciljs`);
             }
         } else {
-            throw new Error("You need to pass a valid document json file. More information in: https://xxxx.com");
+            throw new Error("You need to pass a valid document json file. More information in: https://github.com/fmontes/zeplin-cli-connect-plugin-stenciljs");
         }
     }
 

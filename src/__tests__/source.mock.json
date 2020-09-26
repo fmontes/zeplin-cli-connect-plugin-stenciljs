@@ -1,0 +1,27 @@
+{
+    "components": [
+        {
+            "docs": "This is the documentation",
+            "tag": "my-component",
+            "props": [
+                {
+                    "name": "name",
+                    "type": "string"
+                }
+            ],
+            "filePath": "/my-compontent.tsx"
+        },
+        {
+            "docs": "This is another doc",
+            "tag": "some-component",
+            "props": [
+                {
+                    "name": "type",
+                    "type": "boolean"
+                }
+            ],
+            "filePath": "/some-compontent.tsx"
+        }
+    ],
+    "timestamp": "2020-09-20T05:48:43"
+}
