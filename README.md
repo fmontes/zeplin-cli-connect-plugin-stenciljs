@@ -14,11 +14,11 @@ npm install -g zeplin-cli-connect-plugin-stenciljs
 
 1. Generate the [StencilJS](https://stenciljs.com/) json docs, update you `stencil.config.ts` file and inside the `outputTargets` property add:
 
-```
+```JSON
 outputTargets: [
     { 
-        type: 'docs-json',
-        file: 'path/to/file.json'
+        "type": "docs-json",
+        "file": "path/to/file.json"
     },
 ]
 ```
@@ -26,12 +26,12 @@ and then run `npm run build` to generate the file
 
 2. In your `.zeplin/components.json` configuration file, add the plugin and pass the stencil docs file:
 
-```
+```JSON
 "plugins": [
     {
-        "name": "cli-connect-stenciljs-plugin",
+        "name": "zeplin-cli-connect-plugin-stenciljs",
         "config": {
-            "sourcePath": 'path/to/file.json'
+            "sourcePath": "path/to/file.json"
         }
     }
 ]
